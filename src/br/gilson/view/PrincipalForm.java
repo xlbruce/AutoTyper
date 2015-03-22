@@ -146,7 +146,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         });
 
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("milissegundos");
+        jLabel2.setText("segundos");
         jLabel2.setToolTipText("1000 milissegundos = 1 segundo");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -241,7 +241,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextFieldDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextFieldDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel4))
                                     .addComponent(jLabel2))))))
@@ -293,7 +293,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     private void jToggleButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarActionPerformed
 
         this.jToggleButtonIniciar.setFocusable(false);
-        this.setVisible(true);
         if (this.jToggleButtonIniciar.isSelected()) {
             this.jToggleButtonIniciar.setText("Parar ");
             //Verifica quais boxes estão tickadas
@@ -307,7 +306,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
             try {
                 //Os valores são convertidos para segundos
                 delay = Integer.parseInt(jTextFieldDelay.getText());
-                iniciarEm = Integer.parseInt(jTextFieldIniciarEm.getText());
+                iniciarEm = Integer.parseInt(jTextFieldIniciarEm.getText()) * 1000;
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Insira um número válido");
                 this.jToggleButtonIniciar.setSelected(false);
@@ -348,12 +347,12 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
 
     private void jMenuAjudaMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuAjudaMenuSelected
         AjudaDialog ajuda = new AjudaDialog(this, rootPaneCheckingEnabled);
-        Dimension tamanhoDialog = ajuda.getSize();
-        ajuda.setBounds(((tela.width / 2) - (tamanhoDialog.width / 2)) + 50,
-        (tela.height / 2) - (tamanhoDialog.height / 2),
-        tamanhoDialog.width, tamanhoDialog.height);
-        ajuda.setResizable(false);
-        ajuda.setVisible(true);
+         Dimension tamanhoDialog = ajuda.getSize();
+         ajuda.setBounds(((tela.width / 2) - (tamanhoDialog.width / 2)) + 50,
+         (tela.height / 2) - (tamanhoDialog.height / 2),
+         tamanhoDialog.width, tamanhoDialog.height);
+         ajuda.setResizable(false);
+         ajuda.setVisible(true);
     }//GEN-LAST:event_jMenuAjudaMenuSelected
     private void limpar() {
         for (JCheckBox checkBox : checkBoxes) {
