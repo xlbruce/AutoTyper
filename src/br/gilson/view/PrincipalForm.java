@@ -14,6 +14,15 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import de.ksquared.system.keyboard.GlobalKeyListener;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.jar.JarFile;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -27,10 +36,11 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
      * Creates new form PrincipalForm
      */
     public PrincipalForm() {        
-        setFocusable(true);
+        initGlobalListener();        
         setTitle("Auto Typer");
         addKeyListener(this);
         initComponents();
+        //Desativa o atalho da tecla F10, evitando o bug das mensagens.
         jMenuBar1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F10"), "none");
         setResizable(false);
         //Adiciona as checkboxes no arraylist
@@ -57,8 +67,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
 
         //Listener
         addKeyAndContainerListenerRecursively(this);
-        //Gambi para ativar o listener
-        this.jButtonLimpar.requestFocus();
     }
 
     //Adiciona um listener global
@@ -99,9 +107,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         jCheckBoxF10 = new javax.swing.JCheckBox();
         jCheckBoxF11 = new javax.swing.JCheckBox();
         jCheckBoxF12 = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        jTextFieldIniciarEm = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextFieldDelay = new javax.swing.JTextField();
         jToggleButtonIniciar = new javax.swing.JToggleButton();
@@ -138,21 +143,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
 
         jCheckBoxF12.setText("F12");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel1.setText("Iniciar em");
-        jLabel1.setToolTipText("1000 milissegundos = 1 segundo");
-
-        jTextFieldIniciarEm.setToolTipText("1000 milissegundos = 1 segundo");
-        jTextFieldIniciarEm.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIniciarEmActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel2.setText("segundos");
-        jLabel2.setToolTipText("1000 milissegundos = 1 segundo");
-
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel3.setText("Delay das teclas");
         jLabel3.setToolTipText("1000 milissegundos = 1 segundo");
@@ -174,7 +164,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel4.setText("em milissegundos");
+        jLabel4.setText("(em milissegundos)");
         jLabel4.setToolTipText("1000 milissegundos = 1 segundo");
 
         jMenuAutoTyper.setText("AutoTyper");
@@ -215,7 +205,20 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jToggleButtonIniciar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonLimpar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(8, 8, 8)
+                                .addComponent(jTextFieldDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBoxF4)
                             .addComponent(jCheckBoxF3)
@@ -232,28 +235,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                             .addComponent(jCheckBoxF12)
                             .addComponent(jCheckBoxF11)
                             .addComponent(jCheckBoxF10)
-                            .addComponent(jCheckBoxF9)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jToggleButtonIniciar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonLimpar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldIniciarEm, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextFieldDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jLabel2))))))
+                            .addComponent(jCheckBoxF9))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -279,12 +261,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                     .addComponent(jCheckBoxF4)
                     .addComponent(jCheckBoxF8)
                     .addComponent(jCheckBoxF12))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldIniciarEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldDelay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,18 +270,35 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButtonIniciar)
                     .addComponent(jButtonLimpar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void initGlobalListener() {
+        new GlobalKeyListener().addKeyListener(new de.ksquared.system.keyboard.KeyAdapter() {
+            @Override
+            public void keyPressed(de.ksquared.system.keyboard.KeyEvent event) {
+
+            }
+
+            @Override
+            public void keyReleased(de.ksquared.system.keyboard.KeyEvent event) {
+                //Tecla home
+                if (event.getVirtualKeyCode() == de.ksquared.system.keyboard.KeyEvent.VK_HOME) {
+                    jToggleButtonIniciar.doClick();
+                }
+            }
+        });
+    }
+
     public void disableCheckBoxes() {
         for (JCheckBox checkBox : checkBoxes) {
             checkBox.setEnabled(false);
         }
     }
+
     public void enableCheckBoxes() {
         for (JCheckBox checkBox : checkBoxes) {
             checkBox.setEnabled(true);
@@ -313,7 +307,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     private void jToggleButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarActionPerformed
 
         this.jToggleButtonIniciar.setFocusable(false);
-        
         if (this.jToggleButtonIniciar.isSelected()) {
             disableCheckBoxes();
             this.jToggleButtonIniciar.setText("Parar ");
@@ -328,7 +321,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
             try {
                 //Os valores são convertidos para segundos
                 delay = Integer.parseInt(jTextFieldDelay.getText());
-                iniciarEm = Integer.parseInt(jTextFieldIniciarEm.getText()) * 1000;
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Insira um número válido");
                 this.jToggleButtonIniciar.setSelected(false);
@@ -337,37 +329,33 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                 return;
             }
             //Verifica se os valores inseridos são positivos
-            if (delay < 0 || iniciarEm < 0) {
+            if (delay < 0) {
                 JOptionPane.showMessageDialog(this, "Por favor, insira valores acima de 0");
                 return;
             }
             //Inicia o auto-typer das teclas selecionadas
-            AutoTyper.start(checadas, iniciarEm, delay);
+            AutoTyper.start(checadas, 0, delay);
         } else {
-            this.jToggleButtonIniciar.setText("Iniciar");            
+            this.jToggleButtonIniciar.setText("Iniciar");
             AutoTyper.stop();
             enableCheckBoxes();
         }
     }//GEN-LAST:event_jToggleButtonIniciarActionPerformed
-
-    private void jTextFieldIniciarEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIniciarEmActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIniciarEmActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
         limpar();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jMenuAutoTyperMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuAutoTyperMenuSelected
-        
+
     }//GEN-LAST:event_jMenuAutoTyperMenuSelected
 
     private void jMenuItemAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjudaActionPerformed
         AjudaDialog ajuda = new AjudaDialog(this, rootPaneCheckingEnabled);
         Dimension tamanhoDialog = ajuda.getSize();
         ajuda.setBounds(((tela.width / 2) - (tamanhoDialog.width / 2)) + 50,
-        (tela.height / 2) - (tamanhoDialog.height / 2),
-        tamanhoDialog.width, tamanhoDialog.height);
+                (tela.height / 2) - (tamanhoDialog.height / 2),
+                tamanhoDialog.width, tamanhoDialog.height);
         ajuda.setResizable(false);
         ajuda.setVisible(true);
     }//GEN-LAST:event_jMenuItemAjudaActionPerformed
@@ -385,7 +373,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         for (JCheckBox checkBox : checkBoxes) {
             checkBox.setSelected(false);
             this.jTextFieldDelay.setText("");
-            this.jTextFieldIniciarEm.setText("");
         }
     }
 
@@ -441,8 +428,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     private javax.swing.JCheckBox jCheckBoxF7;
     private javax.swing.JCheckBox jCheckBoxF8;
     private javax.swing.JCheckBox jCheckBoxF9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenuAutoTyper;
@@ -450,7 +435,6 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     private javax.swing.JMenuItem jMenuItemAjuda;
     private javax.swing.JMenuItem jMenuItemSobre;
     private javax.swing.JTextField jTextFieldDelay;
-    private javax.swing.JTextField jTextFieldIniciarEm;
     private javax.swing.JToggleButton jToggleButtonIniciar;
     // End of variables declaration//GEN-END:variables
 

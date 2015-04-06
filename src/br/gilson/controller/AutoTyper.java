@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- * Este programa tem por finalidade automatizar o processo de repetição
- * das teclas de função (F1 - F12) pré-configurando o delay entre os pressionamentos
+ * Este programa tem por finalidade automatizar o processo de repetição das
+ * teclas de função (F1 - F12) pré-configurando o delay entre os pressionamentos
  * e o tempo em que o programa deve iniciar.
- * 
+ *
  * @author Gilson de Paula
  * @version 1.0
  */
@@ -33,17 +33,16 @@ public final class AutoTyper {
     public static synchronized void main(String[] args) {
         try {
             new AutoTyper();
-        } catch (Exception e) {
+        } catch (AWTException e) {
             JOptionPane.showMessageDialog(null, "Não foi possível iniciar a aplicação");
             e.printStackTrace();
         }
-
     }
 
     public final void init() {
         form = new PrincipalForm();
         form.setVisible(true);
-        
+
     }
 
     public static synchronized void start(ArrayList<String> botoes, int delay, int period) {
