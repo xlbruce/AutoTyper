@@ -9,14 +9,16 @@ import java.awt.event.ContainerEvent;
 import java.awt.event.ContainerListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 
 /**
  *
- * @author bruce
+ * @author Gilson da Silva
+ * @version 1.0
  */
 public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         ContainerListener {
@@ -24,11 +26,12 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     /**
      * Creates new form PrincipalForm
      */
-    public PrincipalForm() {
+    public PrincipalForm() {        
         setFocusable(true);
         setTitle("Auto Typer");
         addKeyListener(this);
         initComponents();
+        jMenuBar1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F10"), "none");
         setResizable(false);
         //Adiciona as checkboxes no arraylist
         checkBoxes = new ArrayList<>();
@@ -105,8 +108,9 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         jButtonLimpar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuAjuda = new javax.swing.JMenu();
-        jMenuSobre = new javax.swing.JMenu();
+        jMenuAutoTyper = new javax.swing.JMenu();
+        jMenuItemAjuda = new javax.swing.JMenuItem();
+        jMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,29 +177,34 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         jLabel4.setText("em milissegundos");
         jLabel4.setToolTipText("1000 milissegundos = 1 segundo");
 
-        jMenuAjuda.setText("Ajuda");
-        jMenuAjuda.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenuAjudaMenuSelected(evt);
+        jMenuAutoTyper.setText("AutoTyper");
+        jMenuAutoTyper.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenuAutoTyperMenuSelected(evt);
             }
         });
-        jMenuBar1.add(jMenuAjuda);
 
-        jMenuSobre.setText("Sobre");
-        jMenuSobre.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                jMenuSobreMenuSelected(evt);
-            }
-            public void menuDeselected(javax.swing.event.MenuEvent evt) {
-            }
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+        jMenuItemAjuda.setText("Ajuda");
+        jMenuItemAjuda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAjudaActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenuSobre);
+        jMenuAutoTyper.add(jMenuItemAjuda);
+
+        jMenuItemSobre.setText("Sobre");
+        jMenuItemSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSobreActionPerformed(evt);
+            }
+        });
+        jMenuAutoTyper.add(jMenuItemSobre);
+
+        jMenuBar1.add(jMenuAutoTyper);
 
         setJMenuBar(jMenuBar1);
 
@@ -290,10 +299,23 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public void disableCheckBoxes() {
+        for (JCheckBox checkBox : checkBoxes) {
+            checkBox.setEnabled(false);
+        }
+    }
+    public void enableCheckBoxes() {
+        for (JCheckBox checkBox : checkBoxes) {
+            checkBox.setEnabled(true);
+        }
+    }
     private void jToggleButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarActionPerformed
 
         this.jToggleButtonIniciar.setFocusable(false);
+        
         if (this.jToggleButtonIniciar.isSelected()) {
+            disableCheckBoxes();
             this.jToggleButtonIniciar.setText("Parar ");
             //Verifica quais boxes estão tickadas
             ArrayList<String> checadas = new ArrayList<>();
@@ -311,6 +333,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                 JOptionPane.showMessageDialog(this, "Insira um número válido");
                 this.jToggleButtonIniciar.setSelected(false);
                 this.jToggleButtonIniciar.setText("Iniciar");
+                enableCheckBoxes();
                 return;
             }
             //Verifica se os valores inseridos são positivos
@@ -321,8 +344,9 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
             //Inicia o auto-typer das teclas selecionadas
             AutoTyper.start(checadas, iniciarEm, delay);
         } else {
-            this.jToggleButtonIniciar.setText("Iniciar");
+            this.jToggleButtonIniciar.setText("Iniciar");            
             AutoTyper.stop();
+            enableCheckBoxes();
         }
     }//GEN-LAST:event_jToggleButtonIniciarActionPerformed
 
@@ -334,8 +358,21 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         limpar();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
-    private void jMenuSobreMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuSobreMenuSelected
+    private void jMenuAutoTyperMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuAutoTyperMenuSelected
+        
+    }//GEN-LAST:event_jMenuAutoTyperMenuSelected
 
+    private void jMenuItemAjudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAjudaActionPerformed
+        AjudaDialog ajuda = new AjudaDialog(this, rootPaneCheckingEnabled);
+        Dimension tamanhoDialog = ajuda.getSize();
+        ajuda.setBounds(((tela.width / 2) - (tamanhoDialog.width / 2)) + 50,
+        (tela.height / 2) - (tamanhoDialog.height / 2),
+        tamanhoDialog.width, tamanhoDialog.height);
+        ajuda.setResizable(false);
+        ajuda.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAjudaActionPerformed
+
+    private void jMenuItemSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSobreActionPerformed
         SobreDialog sobre = new SobreDialog(this, rootPaneCheckingEnabled);
         Dimension tamanhoDialog = sobre.getSize();
         sobre.setBounds(((tela.width / 2) - (tamanhoDialog.width / 2)) + 50,
@@ -343,17 +380,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                 tamanhoDialog.width, tamanhoDialog.height);
         sobre.setResizable(false);
         sobre.setVisible(true);
-    }//GEN-LAST:event_jMenuSobreMenuSelected
-
-    private void jMenuAjudaMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuAjudaMenuSelected
-        AjudaDialog ajuda = new AjudaDialog(this, rootPaneCheckingEnabled);
-         Dimension tamanhoDialog = ajuda.getSize();
-         ajuda.setBounds(((tela.width / 2) - (tamanhoDialog.width / 2)) + 50,
-         (tela.height / 2) - (tamanhoDialog.height / 2),
-         tamanhoDialog.width, tamanhoDialog.height);
-         ajuda.setResizable(false);
-         ajuda.setVisible(true);
-    }//GEN-LAST:event_jMenuAjudaMenuSelected
+    }//GEN-LAST:event_jMenuItemSobreActionPerformed
     private void limpar() {
         for (JCheckBox checkBox : checkBoxes) {
             checkBox.setSelected(false);
@@ -418,9 +445,10 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenuAjuda;
+    private javax.swing.JMenu jMenuAutoTyper;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuSobre;
+    private javax.swing.JMenuItem jMenuItemAjuda;
+    private javax.swing.JMenuItem jMenuItemSobre;
     private javax.swing.JTextField jTextFieldDelay;
     private javax.swing.JTextField jTextFieldIniciarEm;
     private javax.swing.JToggleButton jToggleButtonIniciar;
