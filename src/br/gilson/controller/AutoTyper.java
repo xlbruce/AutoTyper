@@ -1,10 +1,13 @@
 package br.gilson.controller;
 
-import br.gilson.model.FFactory;
 import br.gilson.model.Task;
+import br.gilson.model.TaskConfig;
+import br.gilson.model.TaskFactory;
 import br.gilson.view.PrincipalForm;
 import java.awt.AWTException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +25,7 @@ public final class AutoTyper {
     private int iniciarEm;
     static Task[] tasks;
 
-    public AutoTyper() throws AWTException {
+    public AutoTyper() {
         tasks = new Task[12];
         init();
     }
@@ -31,12 +34,7 @@ public final class AutoTyper {
      * @param args the command line arguments
      */
     public static synchronized void main(String[] args) {
-        try {
-            new AutoTyper();
-        } catch (AWTException e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível iniciar a aplicação");
-            e.printStackTrace();
-        }
+        new AutoTyper();
     }
 
     public final void init() {
@@ -45,26 +43,11 @@ public final class AutoTyper {
 
     }
 
-    public static synchronized void start(ArrayList<String> botoes, int delay, int period) {
-        //Verificar quais teclas devem ser acionadas
-        //somente f5 (temporário)
-        ArrayList<String> fs = new ArrayList<>();
-        fs.add("F1");
-        fs.add("F2");
-        fs.add("F3");
-        fs.add("F4");
-        fs.add("F5");
-        fs.add("F6");
-        fs.add("F7");
-        fs.add("F8");
-        fs.add("F9");
-        fs.add("F10");
-        fs.add("F11");
-        fs.add("F12");
-        for (String botao : botoes) {
-            if (fs.contains(botao)) {
-                tasks[fs.indexOf(botao)] = FFactory.getTask(botao);
-                tasks[fs.indexOf(botao)].start(delay, period);
+    public static synchronized void start(Task[] tasks) {
+        AutoTyper.tasks = tasks;
+        for (Task task : AutoTyper.tasks) {
+            if (task != null) {
+                task.start();
             }
         }
     }

@@ -58,169 +58,53 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                      <Component id="jPanel1" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                               <Component id="jToggleButtonIniciar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                               <Component id="jButtonLimpar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="jTextFieldDelay" min="-2" pref="48" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBoxF4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBoxF8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF5" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBoxF12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBoxF9" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="31" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBoxF1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBoxF2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF6" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF10" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBoxF3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF11" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jCheckBoxF4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBoxF12" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldDelay" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jToggleButtonIniciar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButtonLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F2"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F3"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F4"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F5"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F6"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF7">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F7"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F8"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F9"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF10">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F10"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF11">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F11"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JCheckBox" name="jCheckBoxF12">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="F12"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Delay das teclas"/>
-        <Property name="toolTipText" type="java.lang.String" value="1000 milissegundos = 1 segundo"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDelay">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="1000 milissegundos = 1 segundo"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JToggleButton" name="jToggleButtonIniciar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Iniciar"/>
@@ -237,13 +121,311 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonLimparActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxF1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTextFieldIniciarEmF1" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxF2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTextFieldIniciarEmF2" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxF3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTextFieldIniciarEmF3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxF4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTextFieldIniciarEmF4" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxF12" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldIniciarEmF12" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxF10" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldIniciarEmF10" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jCheckBoxF11" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldIniciarEmF11" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jCheckBoxF5" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxF6" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxF7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxF8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxF9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextFieldIniciarEmF5" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF6" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF7" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF8" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF9" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextFieldDelayF1" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDelayF2" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDelayF3" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDelayF4" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDelayF12" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDelayF10" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDelayF11" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jTextFieldDelayF5" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDelayF6" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDelayF7" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDelayF8" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextFieldDelayF9" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxF1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIniciarEmF1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxF2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIniciarEmF2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxF3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIniciarEmF3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxF4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIniciarEmF4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jCheckBoxF5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jCheckBoxF6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jCheckBoxF7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jCheckBoxF8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jCheckBoxF9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIniciarEmF9" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Component id="jTextFieldIniciarEmF5" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxF10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIniciarEmF10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxF11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIniciarEmF11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jCheckBoxF12" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIniciarEmF12" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Component id="jTextFieldDelayF1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTextFieldDelayF2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDelayF3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDelayF4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDelayF6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDelayF7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldDelayF8" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jTextFieldDelayF9" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jTextFieldDelayF5" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDelayF10" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDelayF11" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="jTextFieldDelayF12" min="-2" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F2"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F4"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F5"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F6"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF7">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F7"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF8">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F8"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF9">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F9"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF10">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F10"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF11">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F11"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBoxF12">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="F12"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF1">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF2">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF3">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF4">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF5">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF6">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF7">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF8">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF9">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF10">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF11">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldIniciarEmF12">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF1">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF2">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF3">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF4">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF5">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF6">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF7">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF8">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF9">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF10">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF11">
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldDelayF12">
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dialog" size="12" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="(em milissegundos)"/>
-        <Property name="toolTipText" type="java.lang.String" value="1000 milissegundos = 1 segundo"/>
+        <Property name="text" type="java.lang.String" value="Iniciar Em"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delay"/>
       </Properties>
     </Component>
   </SubComponents>

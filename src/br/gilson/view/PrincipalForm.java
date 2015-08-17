@@ -1,6 +1,10 @@
 package br.gilson.view;
 
 import br.gilson.controller.AutoTyper;
+import br.gilson.model.Task;
+import br.gilson.model.TaskConfig;
+import br.gilson.model.TaskFactory;
+import de.ksquared.system.keyboard.GlobalKeyListener;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -14,15 +18,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
-import de.ksquared.system.keyboard.GlobalKeyListener;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.jar.JarFile;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  *
@@ -35,29 +30,16 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     /**
      * Creates new form PrincipalForm
      */
-    public PrincipalForm() {        
-        initGlobalListener();        
+    public PrincipalForm() {
+        initGlobalListener();
         setTitle("Auto Typer");
         addKeyListener(this);
         initComponents();
         //Desativa o atalho da tecla F10, evitando o bug das mensagens.
         jMenuBar1.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F10"), "none");
         setResizable(false);
-        //Adiciona as checkboxes no arraylist
-        checkBoxes = new ArrayList<>();
-        checkBoxes.add(jCheckBoxF1);
-        checkBoxes.add(jCheckBoxF2);
-        checkBoxes.add(jCheckBoxF3);
-        checkBoxes.add(jCheckBoxF4);
-        checkBoxes.add(jCheckBoxF5);
-        checkBoxes.add(jCheckBoxF6);
-        checkBoxes.add(jCheckBoxF7);
-        checkBoxes.add(jCheckBoxF8);
-        checkBoxes.add(jCheckBoxF9);
-        checkBoxes.add(jCheckBoxF10);
-        checkBoxes.add(jCheckBoxF11);
-        checkBoxes.add(jCheckBoxF12);
 
+        initTaskConfig();
         //Ajusta o frame no centro da tela
         tela = Toolkit.getDefaultToolkit().getScreenSize();
         tamanhoFrame = getSize();
@@ -67,6 +49,22 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
 
         //Listener
         addKeyAndContainerListenerRecursively(this);
+    }
+
+    private void initTaskConfig() {
+        taskConfigs = new TaskConfig[12];
+        taskConfigs[0] = new TaskConfig(jCheckBoxF1, jTextFieldIniciarEmF1, jTextFieldDelayF1);
+        taskConfigs[1] = new TaskConfig(jCheckBoxF2, jTextFieldIniciarEmF2, jTextFieldDelayF2);
+        taskConfigs[2] = new TaskConfig(jCheckBoxF3, jTextFieldIniciarEmF3, jTextFieldDelayF3);
+        taskConfigs[3] = new TaskConfig(jCheckBoxF4, jTextFieldIniciarEmF4, jTextFieldDelayF4);
+        taskConfigs[4] = new TaskConfig(jCheckBoxF5, jTextFieldIniciarEmF5, jTextFieldDelayF5);
+        taskConfigs[5] = new TaskConfig(jCheckBoxF6, jTextFieldIniciarEmF6, jTextFieldDelayF6);
+        taskConfigs[6] = new TaskConfig(jCheckBoxF7, jTextFieldIniciarEmF7, jTextFieldDelayF7);
+        taskConfigs[7] = new TaskConfig(jCheckBoxF8, jTextFieldIniciarEmF8, jTextFieldDelayF8);
+        taskConfigs[8] = new TaskConfig(jCheckBoxF9, jTextFieldIniciarEmF9, jTextFieldDelayF9);
+        taskConfigs[9] = new TaskConfig(jCheckBoxF10, jTextFieldIniciarEmF10, jTextFieldDelayF10);
+        taskConfigs[10] = new TaskConfig(jCheckBoxF11, jTextFieldIniciarEmF11, jTextFieldDelayF11);
+        taskConfigs[11] = new TaskConfig(jCheckBoxF12, jTextFieldIniciarEmF12, jTextFieldDelayF12);
     }
 
     //Adiciona um listener global
@@ -95,6 +93,9 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButtonIniciar = new javax.swing.JToggleButton();
+        jButtonLimpar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jCheckBoxF1 = new javax.swing.JCheckBox();
         jCheckBoxF2 = new javax.swing.JCheckBox();
         jCheckBoxF3 = new javax.swing.JCheckBox();
@@ -107,17 +108,52 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         jCheckBoxF10 = new javax.swing.JCheckBox();
         jCheckBoxF11 = new javax.swing.JCheckBox();
         jCheckBoxF12 = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
-        jTextFieldDelay = new javax.swing.JTextField();
-        jToggleButtonIniciar = new javax.swing.JToggleButton();
-        jButtonLimpar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jTextFieldIniciarEmF1 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF2 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF3 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF4 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF5 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF6 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF7 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF8 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF9 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF10 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF11 = new javax.swing.JTextField();
+        jTextFieldIniciarEmF12 = new javax.swing.JTextField();
+        jTextFieldDelayF1 = new javax.swing.JTextField();
+        jTextFieldDelayF2 = new javax.swing.JTextField();
+        jTextFieldDelayF3 = new javax.swing.JTextField();
+        jTextFieldDelayF4 = new javax.swing.JTextField();
+        jTextFieldDelayF5 = new javax.swing.JTextField();
+        jTextFieldDelayF6 = new javax.swing.JTextField();
+        jTextFieldDelayF7 = new javax.swing.JTextField();
+        jTextFieldDelayF8 = new javax.swing.JTextField();
+        jTextFieldDelayF9 = new javax.swing.JTextField();
+        jTextFieldDelayF10 = new javax.swing.JTextField();
+        jTextFieldDelayF11 = new javax.swing.JTextField();
+        jTextFieldDelayF12 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAutoTyper = new javax.swing.JMenu();
         jMenuItemAjuda = new javax.swing.JMenuItem();
         jMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jToggleButtonIniciar.setText("Iniciar");
+        jToggleButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonIniciarActionPerformed(evt);
+            }
+        });
+
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         jCheckBoxF1.setText("F1");
 
@@ -143,29 +179,159 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
 
         jCheckBoxF12.setText("F12");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel3.setText("Delay das teclas");
-        jLabel3.setToolTipText("1000 milissegundos = 1 segundo");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldIniciarEmF1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldIniciarEmF2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldIniciarEmF3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldIniciarEmF4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldIniciarEmF12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldIniciarEmF10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldIniciarEmF11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBoxF5)
+                            .addComponent(jCheckBoxF6)
+                            .addComponent(jCheckBoxF7)
+                            .addComponent(jCheckBoxF8)
+                            .addComponent(jCheckBoxF9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldIniciarEmF5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIniciarEmF6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIniciarEmF7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIniciarEmF8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldIniciarEmF9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldDelayF1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDelayF2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDelayF3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDelayF4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextFieldDelayF12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextFieldDelayF10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jTextFieldDelayF11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDelayF5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDelayF6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDelayF7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDelayF8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDelayF9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxF1)
+                    .addComponent(jTextFieldIniciarEmF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxF2)
+                    .addComponent(jTextFieldIniciarEmF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxF3)
+                    .addComponent(jTextFieldIniciarEmF3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxF4)
+                    .addComponent(jTextFieldIniciarEmF4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBoxF5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxF6)
+                            .addComponent(jTextFieldIniciarEmF6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxF7)
+                            .addComponent(jTextFieldIniciarEmF7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxF8)
+                            .addComponent(jTextFieldIniciarEmF8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCheckBoxF9)
+                            .addComponent(jTextFieldIniciarEmF9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextFieldIniciarEmF5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxF10)
+                    .addComponent(jTextFieldIniciarEmF10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxF11)
+                    .addComponent(jTextFieldIniciarEmF11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxF12)
+                    .addComponent(jTextFieldIniciarEmF12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jTextFieldDelayF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldDelayF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldDelayF3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldDelayF4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jTextFieldDelayF6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldDelayF7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldDelayF8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldDelayF9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDelayF5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldDelayF10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldDelayF11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldDelayF12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        jTextFieldDelay.setToolTipText("1000 milissegundos = 1 segundo");
+        jLabel1.setText("Iniciar Em");
 
-        jToggleButtonIniciar.setText("Iniciar");
-        jToggleButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonIniciarActionPerformed(evt);
-            }
-        });
-
-        jButtonLimpar.setText("Limpar");
-        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonLimparActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jLabel4.setText("(em milissegundos)");
-        jLabel4.setToolTipText("1000 milissegundos = 1 segundo");
+        jLabel2.setText("Delay");
 
         jMenuAutoTyper.setText("AutoTyper");
         jMenuAutoTyper.addMenuListener(new javax.swing.event.MenuListener() {
@@ -206,71 +372,36 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jToggleButtonIniciar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonLimpar))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(8, 8, 8)
-                                .addComponent(jTextFieldDelay, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBoxF4)
-                            .addComponent(jCheckBoxF3)
-                            .addComponent(jCheckBoxF2)
-                            .addComponent(jCheckBoxF1))
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBoxF8)
-                            .addComponent(jCheckBoxF7)
-                            .addComponent(jCheckBoxF6)
-                            .addComponent(jCheckBoxF5))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBoxF12)
-                            .addComponent(jCheckBoxF11)
-                            .addComponent(jCheckBoxF10)
-                            .addComponent(jCheckBoxF9))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(jToggleButtonIniciar)
+                                .addGap(139, 139, 139)
+                                .addComponent(jButtonLimpar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jLabel1)
+                                .addGap(49, 49, 49)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxF1)
-                    .addComponent(jCheckBoxF5)
-                    .addComponent(jCheckBoxF9))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxF2)
-                    .addComponent(jCheckBoxF6)
-                    .addComponent(jCheckBoxF10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxF3)
-                    .addComponent(jCheckBoxF7)
-                    .addComponent(jCheckBoxF11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxF4)
-                    .addComponent(jCheckBoxF8)
-                    .addComponent(jCheckBoxF12))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextFieldDelay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jToggleButtonIniciar)
                     .addComponent(jButtonLimpar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -293,52 +424,51 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         });
     }
 
-    public void disableCheckBoxes() {
-        for (JCheckBox checkBox : checkBoxes) {
-            checkBox.setEnabled(false);
-        }
-    }
+    //TODO
+    /*public void disableCheckBoxes() {
+     for (JCheckBox checkBox : checkBoxes) {
+     checkBox.setEnabled(false);
+     }
+     }
+    
+     public void enableCheckBoxes() {
+     for (JCheckBox checkBox : checkBoxes) {
+     checkBox.setEnabled(true);
+     }
+     }*/
+    private void atualizarTaskConfig() {
 
-    public void enableCheckBoxes() {
-        for (JCheckBox checkBox : checkBoxes) {
-            checkBox.setEnabled(true);
-        }
     }
     private void jToggleButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarActionPerformed
 
         this.jToggleButtonIniciar.setFocusable(false);
         if (this.jToggleButtonIniciar.isSelected()) {
-            disableCheckBoxes();
+            //disableCheckBoxes();
             this.jToggleButtonIniciar.setText("Parar ");
             //Verifica quais boxes estão tickadas
-            ArrayList<String> checadas = new ArrayList<>();
-            for (JCheckBox checkBoxe : checkBoxes) {
-                if (checkBoxe.isSelected()) {
-                    checadas.add(checkBoxe.getText());
+            Task[] tasks = new Task[12];
+            int i = 0;
+            for (TaskConfig taskConfig : taskConfigs) {
+                if (taskConfig.isValid()) {
+                    tasks[i++] = TaskFactory.getTask(taskConfig);
                 }
             }
-            int delay, iniciarEm;
-            try {
-                //Os valores são convertidos para segundos
-                delay = Integer.parseInt(jTextFieldDelay.getText());
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Insira um número válido");
-                this.jToggleButtonIniciar.setSelected(false);
-                this.jToggleButtonIniciar.setText("Iniciar");
-                enableCheckBoxes();
-                return;
-            }
+            /*for (JCheckBox checkBoxe : checkBoxes) {
+             if (checkBoxe.isSelected()) {
+             checadas.add(checkBoxe.getText());
+             }
+             }*/
             //Verifica se os valores inseridos são positivos
-            if (delay < 0) {
-                JOptionPane.showMessageDialog(this, "Por favor, insira valores acima de 0");
-                return;
-            }
+            /*if (delay < 0) {
+             JOptionPane.showMessageDialog(this, "Por favor, insira valores acima de 0");
+             return;
+             }*/
             //Inicia o auto-typer das teclas selecionadas
-            AutoTyper.start(checadas, 0, delay);
+            AutoTyper.start(tasks);
         } else {
             this.jToggleButtonIniciar.setText("Iniciar");
             AutoTyper.stop();
-            enableCheckBoxes();
+            //enableCheckBoxes();
         }
     }//GEN-LAST:event_jToggleButtonIniciarActionPerformed
 
@@ -370,10 +500,11 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
         sobre.setVisible(true);
     }//GEN-LAST:event_jMenuItemSobreActionPerformed
     private void limpar() {
-        for (JCheckBox checkBox : checkBoxes) {
-            checkBox.setSelected(false);
-            this.jTextFieldDelay.setText("");
-        }
+        //TODO
+        /*for (JCheckBox checkBox : checkBoxes) {
+         checkBox.setSelected(false);
+         this.jTextFieldDelay.setText("");
+         }*/
     }
 
     /**
@@ -413,7 +544,7 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     }
     private Dimension tamanhoFrame;
     private Dimension tela;
-    private final ArrayList<JCheckBox> checkBoxes;
+    private TaskConfig[] taskConfigs;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JCheckBox jCheckBoxF1;
@@ -428,13 +559,37 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
     private javax.swing.JCheckBox jCheckBoxF7;
     private javax.swing.JCheckBox jCheckBoxF8;
     private javax.swing.JCheckBox jCheckBoxF9;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenuAutoTyper;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemAjuda;
     private javax.swing.JMenuItem jMenuItemSobre;
-    private javax.swing.JTextField jTextFieldDelay;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextFieldDelayF1;
+    private javax.swing.JTextField jTextFieldDelayF10;
+    private javax.swing.JTextField jTextFieldDelayF11;
+    private javax.swing.JTextField jTextFieldDelayF12;
+    private javax.swing.JTextField jTextFieldDelayF2;
+    private javax.swing.JTextField jTextFieldDelayF3;
+    private javax.swing.JTextField jTextFieldDelayF4;
+    private javax.swing.JTextField jTextFieldDelayF5;
+    private javax.swing.JTextField jTextFieldDelayF6;
+    private javax.swing.JTextField jTextFieldDelayF7;
+    private javax.swing.JTextField jTextFieldDelayF8;
+    private javax.swing.JTextField jTextFieldDelayF9;
+    private javax.swing.JTextField jTextFieldIniciarEmF1;
+    private javax.swing.JTextField jTextFieldIniciarEmF10;
+    private javax.swing.JTextField jTextFieldIniciarEmF11;
+    private javax.swing.JTextField jTextFieldIniciarEmF12;
+    private javax.swing.JTextField jTextFieldIniciarEmF2;
+    private javax.swing.JTextField jTextFieldIniciarEmF3;
+    private javax.swing.JTextField jTextFieldIniciarEmF4;
+    private javax.swing.JTextField jTextFieldIniciarEmF5;
+    private javax.swing.JTextField jTextFieldIniciarEmF6;
+    private javax.swing.JTextField jTextFieldIniciarEmF7;
+    private javax.swing.JTextField jTextFieldIniciarEmF8;
+    private javax.swing.JTextField jTextFieldIniciarEmF9;
     private javax.swing.JToggleButton jToggleButtonIniciar;
     // End of variables declaration//GEN-END:variables
 
@@ -507,10 +662,10 @@ public class PrincipalForm extends javax.swing.JFrame implements KeyListener,
                     break;
                 //F8
                 case 119:
-                    if (this.jCheckBoxF8.isSelected()) {
-                        this.jCheckBoxF8.setSelected(false);
+                    if (this.jCheckBoxF3.isSelected()) {
+                        this.jCheckBoxF3.setSelected(false);
                     } else {
-                        this.jCheckBoxF8.setSelected(true);
+                        this.jCheckBoxF3.setSelected(true);
                     }
                     break;
                 //F9
